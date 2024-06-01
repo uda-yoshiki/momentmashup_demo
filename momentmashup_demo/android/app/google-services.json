@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "938549557277",
+    "project_id": "momentmashup",
+    "storage_bucket": "momentmashup.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:938549557277:android:8ddcd440b935140350aef4",
+        "android_client_info": {
+          "package_name": "com.example.momentmashup_demo"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCy766-gHTyqWKevhlkySSLqnFifdMsTwY"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

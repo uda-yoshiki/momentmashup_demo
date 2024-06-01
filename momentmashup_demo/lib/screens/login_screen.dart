@@ -1,9 +1,19 @@
 import 'package:flutter/material.dart';
 import 'package:momentmashup_demo/screens/home_screen.dart'; // HomeScreenをインポート
 import 'package:google_fonts/google_fonts.dart';
+import 'package:momentmashup_demo/models/user_auth.dart'; // UserAuthをインポート
 
-class LoginScreen extends StatelessWidget {
+class LoginScreen extends StatefulWidget {
   const LoginScreen({super.key});
+
+  @override
+  _LoginScreenState createState() => _LoginScreenState();
+}
+
+class _LoginScreenState extends State<LoginScreen> {
+  final TextEditingController _usernameController = TextEditingController();
+  final TextEditingController _passwordController = TextEditingController();
+  final UserAuth _userAuth = UserAuth();
 
   @override
   Widget build(BuildContext context) {
@@ -19,20 +29,21 @@ class LoginScreen extends StatelessWidget {
                 style: GoogleFonts.notoSansJp(
                   fontSize: 24,
                   fontWeight: FontWeight.bold,
-                  color: Color(0xFF03AED2),
+                  color: const Color(0xFF03AED2),
                 ),
               ),
               const SizedBox(height: 20),
               Padding(
-                padding: EdgeInsets.symmetric(horizontal: 40),
+                padding: const EdgeInsets.symmetric(horizontal: 40),
                 child: TextField(
+                  controller: _usernameController,
                   decoration: InputDecoration(
                     labelText: 'ユーザー名',
-                    labelStyle: GoogleFonts.notoSansJp(color: Color(0xFF68D2E8)),
-                    enabledBorder: OutlineInputBorder(
+                    labelStyle: GoogleFonts.notoSansJp(color: const Color(0xFF68D2E8)),
+                    enabledBorder: const OutlineInputBorder(
                       borderSide: BorderSide(color: Color(0xFF68D2E8)),
                     ),
-                    focusedBorder: OutlineInputBorder(
+                    focusedBorder: const OutlineInputBorder(
                       borderSide: BorderSide(color: Color(0xFF03AED2)),
                     ),
                   ),
@@ -40,16 +51,17 @@ class LoginScreen extends StatelessWidget {
               ),
               const SizedBox(height: 20),
               Padding(
-                padding: EdgeInsets.symmetric(horizontal: 40),
+                padding: const EdgeInsets.symmetric(horizontal: 40),
                 child: TextField(
+                  controller: _passwordController,
                   obscureText: true,
                   decoration: InputDecoration(
                     labelText: 'パスワード',
-                    labelStyle: GoogleFonts.notoSansJp(color: Color(0xFF68D2E8)),
-                    enabledBorder: OutlineInputBorder(
+                    labelStyle: GoogleFonts.notoSansJp(color: const Color(0xFF68D2E8)),
+                    enabledBorder: const OutlineInputBorder(
                       borderSide: BorderSide(color: Color(0xFF68D2E8)),
                     ),
-                    focusedBorder: OutlineInputBorder(
+                    focusedBorder: const OutlineInputBorder(
                       borderSide: BorderSide(color: Color(0xFF03AED2)),
                     ),
                   ),
@@ -57,9 +69,18 @@ class LoginScreen extends StatelessWidget {
               ),
               const SizedBox(height: 30),
               ElevatedButton(
-                onPressed: () {
-                  // ログイン処理後、HomeScreenに遷移
-                  Navigator.push(context, MaterialPageRoute(builder: (context) => const HomeScreen()));
+                onPressed: () async {
+                  final user = await _userAuth.signInWithEmailAndPassword(
+                    _usernameController.text,
+                    _passwordController.text,
+                  );
+                  if (user != null) {
+                    Navigator.push(context, MaterialPageRoute(builder: (context) => const HomeScreen()));
+                  } else {
+                    ScaffoldMessenger.of(context).showSnackBar(
+                      const SnackBar(content: Text('ログインに失敗しました。')),
+                    );
+                  }
                 },
                 style: ElevatedButton.styleFrom(
                   backgroundColor: const Color(0xFF03AED2),
@@ -74,10 +95,10 @@ class LoginScreen extends StatelessWidget {
                 child: Text(
                   '新規登録はこちら',
                   style: GoogleFonts.notoSansJp(
-                    color: Color(0xFFFDDE55),
+                    color: const Color(0xFFFDDE55),
                     fontWeight: FontWeight.bold,
                     decoration: TextDecoration.underline,
-                    decorationColor: Color(0xFF03AED2), // アンダーラインの色を変更
+                    decorationColor: const Color(0xFF03AED2), // アンダーラインの色を変更
                   ),
                 ),
               ),
@@ -88,10 +109,10 @@ class LoginScreen extends StatelessWidget {
                 child: Text(
                   'パスワードを忘れた場合',
                   style: GoogleFonts.notoSansJp(
-                    color: Color(0xFFFDDE55),
+                    color: const Color(0xFFFDDE55),
                     fontWeight: FontWeight.bold,
                     decoration: TextDecoration.underline,
-                    decorationColor: Color(0xFF03AED2), // アンダーラインの色を変更
+                    decorationColor: const Color(0xFF03AED2), // アンダーラインの色を変更
                   ),
                 ),
               ),
