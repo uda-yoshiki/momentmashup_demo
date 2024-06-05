@@ -18,7 +18,7 @@ class _LoginScreenState extends State<LoginScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Colors.white,
+      backgroundColor: Color(0xFF018175), // バックカラー変更
       body: Center(
         child: SingleChildScrollView(
           child: Column(
@@ -29,7 +29,7 @@ class _LoginScreenState extends State<LoginScreen> {
                 style: GoogleFonts.notoSansJp(
                   fontSize: 24,
                   fontWeight: FontWeight.bold,
-                  color: const Color(0xFF03AED2),
+                  color: Colors.white, // 白抜き
                 ),
               ),
               const SizedBox(height: 20),
@@ -39,12 +39,12 @@ class _LoginScreenState extends State<LoginScreen> {
                   controller: _usernameController,
                   decoration: InputDecoration(
                     labelText: 'ユーザー名',
-                    labelStyle: GoogleFonts.notoSansJp(color: const Color(0xFF68D2E8)),
-                    enabledBorder: const OutlineInputBorder(
-                      borderSide: BorderSide(color: Color(0xFF68D2E8)),
+                    labelStyle: GoogleFonts.notoSansJp(color: Colors.white), // 白抜き
+                    enabledBorder: OutlineInputBorder(
+                      borderSide: BorderSide(color: Colors.white), // 白抜き
                     ),
-                    focusedBorder: const OutlineInputBorder(
-                      borderSide: BorderSide(color: Color(0xFF03AED2)),
+                    focusedBorder: OutlineInputBorder(
+                      borderSide: BorderSide(color: Colors.white), // 白抜き
                     ),
                   ),
                 ),
@@ -57,12 +57,12 @@ class _LoginScreenState extends State<LoginScreen> {
                   obscureText: true,
                   decoration: InputDecoration(
                     labelText: 'パスワード',
-                    labelStyle: GoogleFonts.notoSansJp(color: const Color(0xFF68D2E8)),
-                    enabledBorder: const OutlineInputBorder(
-                      borderSide: BorderSide(color: Color(0xFF68D2E8)),
+                    labelStyle: GoogleFonts.notoSansJp(color: Colors.white), // 白抜き
+                    enabledBorder: OutlineInputBorder(
+                      borderSide: BorderSide(color: Colors.white), // 白抜き
                     ),
-                    focusedBorder: const OutlineInputBorder(
-                      borderSide: BorderSide(color: Color(0xFF03AED2)),
+                    focusedBorder: OutlineInputBorder(
+                      borderSide: BorderSide(color: Colors.white), // 白抜き
                     ),
                   ),
                 ),
@@ -83,10 +83,10 @@ class _LoginScreenState extends State<LoginScreen> {
                   }
                 },
                 style: ElevatedButton.styleFrom(
-                  backgroundColor: const Color(0xFF03AED2),
+                  backgroundColor: Colors.white, // 白抜き
                   padding: const EdgeInsets.symmetric(horizontal: 50, vertical: 15),
                 ),
-                child: Text('ログイン', style: GoogleFonts.notoSansJp(fontSize: 20, fontWeight: FontWeight.bold, color: Colors.white)),
+                child: Text('ログイン', style: GoogleFonts.notoSansJp(fontSize: 20, fontWeight: FontWeight.bold, color: Color(0xFF018175))),
               ),
               TextButton(
                 onPressed: () {
@@ -95,10 +95,10 @@ class _LoginScreenState extends State<LoginScreen> {
                 child: Text(
                   '新規登録はこちら',
                   style: GoogleFonts.notoSansJp(
-                    color: const Color(0xFFFDDE55),
+                    color: Colors.white, // 白抜き
                     fontWeight: FontWeight.bold,
                     decoration: TextDecoration.underline,
-                    decorationColor: const Color(0xFF03AED2), // アンダーラインの色を変更
+                    decorationColor: Colors.white, // アンダーラインの色を変更
                   ),
                 ),
               ),
@@ -109,10 +109,10 @@ class _LoginScreenState extends State<LoginScreen> {
                 child: Text(
                   'パスワードを忘れた場合',
                   style: GoogleFonts.notoSansJp(
-                    color: const Color(0xFFFDDE55),
+                    color: Colors.white, // 白抜き
                     fontWeight: FontWeight.bold,
                     decoration: TextDecoration.underline,
-                    decorationColor: const Color(0xFF03AED2), // アンダーラインの色を変更
+                    decorationColor: Colors.white, // アンダーラインの色を変更
                   ),
                 ),
               ),
